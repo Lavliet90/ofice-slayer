@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://bvjif1c7k2tcd"]
+
+[ext_resource type="Script" path="res://player/player.gd" id="1_5isgf"]
+[ext_resource type="Texture2D" uid="uid://bb3senubrf07o" path="res://assets/player/hero idle.png" id="2_ahutm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fsv0y"]
+size = Vector2(38, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pvo7y"]
+atlas = ExtResource("2_ahutm")
+region = Rect2(96, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_31tjv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pvo7y")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 1.0
+}]
+
+[node name="player" type="CharacterBody2D"]
+script = ExtResource("1_5isgf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3, 32.5)
+shape = SubResource("RectangleShape2D_fsv0y")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+light_mask = 512
+visibility_layer = 512
+position = Vector2(-1, -19)
+scale = Vector2(3.73393, 3.73393)
+sprite_frames = SubResource("SpriteFrames_31tjv")
+animation = &"idle"
+frame_progress = 0.399315
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.5, 1.5)
+process_callback = 0
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+drag_horizontal_enabled = true
