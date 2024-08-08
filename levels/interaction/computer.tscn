@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://bufr5gj505iii"]
+
+[ext_resource type="Script" path="res://levels/interaction/computer.gd" id="1_xe4v4"]
+[ext_resource type="Texture2D" uid="uid://dcqfuj6lj3htg" path="res://assets/maps/interaction/компик.png" id="2_2am8b"]
+[ext_resource type="PackedScene" uid="uid://dacy0gto40mss" path="res://levels/interaction/interaction_area/interaction_area.tscn" id="2_fjng7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dt6qj"]
+radius = 63.0079
+
+[node name="computer" type="Node2D"]
+script = ExtResource("1_xe4v4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3.16667, 3.16667)
+texture = ExtResource("2_2am8b")
+
+[node name="interaction_area" parent="." instance=ExtResource("2_fjng7")]
+action_name = "start computer"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interaction_area"]
+shape = SubResource("CircleShape2D_dt6qj")

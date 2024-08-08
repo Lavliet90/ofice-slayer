@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6flteptfh5yb"]
+
+[ext_resource type="Script" path="res://interface/visual_effects/FadeOutScreen.gd" id="1_dhbir"]
+
+[node name="FadeOutScreen" type="CanvasLayer"]
+layer = 0
+script = ExtResource("1_dhbir")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 292.0
+offset_top = 97.0
+offset_right = 1661.0
+offset_bottom = 770.0
+color = Color(0, 0, 0, 1)
+
+[node name="TweenContainer" type="Node" parent="."]

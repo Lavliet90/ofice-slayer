@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://dr8lbpn8n86ug"]
+
+[ext_resource type="Script" path="res://levels/interaction/InteracttionManager.gd" id="1_no6fn"]
+
+[node name="InteracttionManager" type="Node2D"]
+script = ExtResource("1_no6fn")
+
+[node name="Label" type="Label" parent="."]
+z_index = 20
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -181.0
+offset_right = 181.0
+offset_bottom = 139.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 30
+text = "[E] TO INTRACT"
+horizontal_alignment = 1
+vertical_alignment = 1

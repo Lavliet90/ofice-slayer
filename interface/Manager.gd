@@ -1,6 +1,6 @@
 extends Node
 
-@onready var pause_menu = $"../CanvasLayer/PauseMenu"
+@onready var pause_menu = "res://interface/pause_menu.tscn"
 @onready var player = $"../Player/player"
 
 var save_path = "user://savegame.save"

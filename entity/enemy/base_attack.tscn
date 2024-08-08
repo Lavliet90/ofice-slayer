@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjl3n70vnx33d"]
+
+[ext_resource type="Script" path="res://entity/enemy/base_attack.gd" id="1_u5cor"]
+
+[node name="RigidBody2D" type="Area2D" groups=["attack"]]
+script = ExtResource("1_u5cor")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]

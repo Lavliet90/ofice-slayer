@@ -3,6 +3,7 @@
 [sub_resource type="ViewportTexture" id="ViewportTexture_nnut8"]
 
 [node name="PauseMenu" type="Control"]
+visibility_layer = 16
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

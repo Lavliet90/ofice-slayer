@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dn8e4jga04kkt"]
+
+[ext_resource type="Script" path="res://entity/player/player.gd" id="1_0j5nx"]
+
+[node name="player" type="CharacterBody2D" groups=["players"]]
+light_mask = 6
+visibility_layer = 7
+collision_layer = 7
+collision_mask = 7
+script = ExtResource("1_0j5nx")

@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bvjif1c7k2tcd"]
-
-[ext_resource type="Script" path="res://player/player.gd" id="1_5isgf"]
-
-[node name="player" type="CharacterBody2D" groups=["players"]]
-collision_layer = 2
-script = ExtResource("1_5isgf")

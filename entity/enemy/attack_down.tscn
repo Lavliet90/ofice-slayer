@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://buo5f6w0u0wcy"]
+
+[ext_resource type="PackedScene" uid="uid://bjl3n70vnx33d" path="res://entity/enemy/base_attack.tscn" id="1_j3el4"]
+[ext_resource type="Script" path="res://entity/enemy/attack_down.gd" id="2_ue655"]
+[ext_resource type="Texture2D" uid="uid://cxryah4ow5ee1" path="res://assets/maps/lvl_1/monitor.png" id="2_yoho2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ucxa6"]
+
+[node name="attack_down" instance=ExtResource("1_j3el4")]
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("2_ue655")
+speed = 200.0
+
+[node name="CollisionShape2D" parent="." index="0"]
+scale = Vector2(3.91149, 3.91149)
+shape = SubResource("RectangleShape2D_ucxa6")
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="1"]
+scale = Vector2(0.487268, 0.487268)
+texture = ExtResource("2_yoho2")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

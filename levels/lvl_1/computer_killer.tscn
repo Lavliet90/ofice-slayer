@@ -1,0 +1,146 @@
+[gd_scene load_steps=16 format=3 uid="uid://depxpaluesaww"]
+
+[ext_resource type="Script" path="res://levels/lvl_1/computer_killer.gd" id="1_okckv"]
+[ext_resource type="Texture2D" uid="uid://cxryah4ow5ee1" path="res://assets/maps/lvl_1/monitor.png" id="1_t0up8"]
+[ext_resource type="Script" path="res://levels/lvl_1/start_interact.gd" id="2_dr7or"]
+[ext_resource type="PackedScene" uid="uid://dacy0gto40mss" path="res://levels/interaction/interaction_area/interaction_area.tscn" id="4_fnt3f"]
+[ext_resource type="Texture2D" uid="uid://dsoln601bv7wm" path="res://assets/maps/lvl_1/Press_start.png" id="5_00wmu"]
+[ext_resource type="Texture2D" uid="uid://d2u3rnn3ta77w" path="res://assets/player/ds.jpg" id="6_p2wcy"]
+[ext_resource type="Script" path="res://entity/player/player_box_level_1.gd" id="7_4xtkr"]
+[ext_resource type="Script" path="res://levels/lvl_1/Batle_computer.gd" id="7_j6gbn"]
+[ext_resource type="PackedScene" uid="uid://ck10x87e80gkh" path="res://interface/interface_in_game.tscn" id="8_60f38"]
+[ext_resource type="PackedScene" uid="uid://dn8e4jga04kkt" path="res://entity/player/player.tscn" id="8_ija7t"]
+[ext_resource type="PackedScene" uid="uid://buo5f6w0u0wcy" path="res://entity/enemy/attack_down.tscn" id="8_qcgbn"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_s4dgk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a8lc4"]
+size = Vector2(40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_43fva"]
+atlas = ExtResource("6_p2wcy")
+region = Rect2(0, 0, 40, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vg4il"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_43fva")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Computer_killer" type="Node2D"]
+script = ExtResource("1_okckv")
+
+[node name="computer_sprite" type="Sprite2D" parent="."]
+position = Vector2(986, 717)
+scale = Vector2(23.831, 23.831)
+texture = ExtResource("1_t0up8")
+
+[node name="Collisium_Computer" type="StaticBody2D" parent="."]
+position = Vector2(984, 720)
+scale = Vector2(23.831, 23.831)
+physics_material_override = SubResource("PhysicsMaterial_s4dgk")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisium_Computer"]
+light_mask = 7
+visibility_layer = 7
+polygon = PackedVector2Array(-29.0798, -26.0585, 27.9468, -26.0166, 28.0308, 1.97222, -29.0379, 1.97222, -29.0379, -26.0166, -32.0172, -29.0379, -32.0172, 6.0006, 31.0101, 6.0006, 31.0101, -28.9959, -32.0172, -29.0379)
+
+[node name="start_interact" type="Node2D" parent="."]
+position = Vector2(918, 51)
+scale = Vector2(11.4, 11.4)
+script = ExtResource("2_dr7or")
+
+[node name="Sprite2D" type="Sprite2D" parent="start_interact"]
+texture = ExtResource("5_00wmu")
+
+[node name="interaction_area" parent="start_interact" instance=ExtResource("4_fnt3f")]
+position = Vector2(4.56141, 26.6667)
+collision_mask = 4
+action_name = "start game"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="start_interact/interaction_area"]
+polygon = PackedVector2Array(-14.5614, 5.35088, 14.4737, 5.35088, 14.4737, 4.38597, 15.4386, 4.38597, 15.4386, 2.36843, 16.4912, 2.36843, 16.4912, -2.7193, 15.4386, -2.7193, 15.4386, -4.64912, 14.4737, -4.64912, 14.4737, -5.70175, -14.5614, -5.70175, -14.5614, -4.64912, -15.614, -4.64912, -15.614, -2.63158, -16.5789, -2.63158, -16.5789, 2.36843, -15.5263, 2.36843, -15.5263, 4.38597, -14.5614, 4.38597)
+
+[node name="CanvasLayerPlayer" type="CanvasLayer" parent="."]
+
+[node name="player" parent="CanvasLayerPlayer" instance=ExtResource("8_ija7t")]
+top_level = true
+visibility_layer = 15
+position = Vector2(970, 484)
+collision_layer = 4
+collision_mask = 13
+script = ExtResource("7_4xtkr")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="CanvasLayerPlayer/player"]
+light_mask = 4
+visibility_layer = 4
+shape = SubResource("RectangleShape2D_a8lc4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayerPlayer/player"]
+light_mask = 4
+visibility_layer = 4
+z_index = 1000
+sprite_frames = SubResource("SpriteFrames_vg4il")
+
+[node name="attack_down2" parent="CanvasLayerPlayer" instance=ExtResource("8_qcgbn")]
+position = Vector2(991, -198)
+
+[node name="attack_down" parent="CanvasLayerPlayer" instance=ExtResource("8_qcgbn")]
+position = Vector2(551, -237)
+collision_mask = 8
+
+[node name="interface_in_game" parent="." instance=ExtResource("8_60f38")]
+
+[node name="Batle_computer" type="Node" parent="."]
+script = ExtResource("7_j6gbn")
+
+[node name="BattleUI" type="Control" parent="Batle_computer"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 295.0
+offset_top = 98.0
+offset_right = 1653.0
+offset_bottom = 765.0
+
+[node name="PlayerStats" type="Label" parent="Batle_computer/BattleUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.162
+anchor_bottom = 0.164
+offset_right = -179.996
+offset_bottom = -86.388
+
+[node name="EnemyStats" type="Label" parent="Batle_computer/BattleUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.745
+anchor_right = 1.0
+anchor_bottom = 0.141
+offset_left = 345.29
+offset_bottom = -71.047
+grow_horizontal = 0
+
+[node name="ActioButtons" type="VBoxContainer" parent="Batle_computer/BattleUI"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 434.0
+offset_right = 82.0
+offset_bottom = 500.0
+scale = Vector2(3.53048, 3.39006)
+metadata/_edit_group_ = true
+
+[node name="AttackButton" type="Button" parent="Batle_computer/BattleUI/ActioButtons"]
+layout_mode = 2
+text = "ATTAC"
+
+[node name="DefendButton" type="Button" parent="Batle_computer/BattleUI/ActioButtons"]
+layout_mode = 2
+text = "DEFEND"
+
+[node name="BattleField" type="Node2D" parent="Batle_computer"]
